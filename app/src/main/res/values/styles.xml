@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
+        <item name="listPreferredItemHeightSmall">60dp</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Medium">
+        <item name="android:fontFamily">@font/sf_medium</item>
+    </style>
+
+    <style name="AppTheme.Regular">
+        <item name="android:fontFamily">@font/sf_regular</item>
+    </style>
+
+    <style name="AppTheme.Drawer" parent="AppTheme">
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+    <style name="CustomCompoundButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:background">@drawable/selector_bg_radio_button</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:button">@null</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

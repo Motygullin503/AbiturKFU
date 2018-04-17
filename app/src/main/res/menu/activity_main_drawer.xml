@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Главное" />
+        <item
+            android:id="@+id/nav_calculate_exams"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Калькулятор ЕГЭ" />
+        <item
+            android:id="@+id/nav_abiturient_calendar"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Календарь абитуриента" />
+        <item
+            android:id="@+id/nav_courses"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Подготовительные курсы" />
+
+        <item
+            android:id="@+id/nav_contests"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Олимпиады и конкурсы" />
+        <item
+            android:id="@+id/nav_how_to_enter"
+            android:icon="@drawable/ic_rectangle"
+            android:title="Как поступить?" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_rectangle"
+            android:title="О нас" />
+    </group>
+
+
+</menu>
