@@ -30,13 +30,27 @@
 
     </style>
 
-    <style name="CustomCompoundButton" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:layout_margin">4dp</item>
-        <item name="android:background">@drawable/selector_bg_radio_button</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:button">@null</item>
+    <style name="AppTheme.CustomCheckedTextView" parent="@android:style/Widget.Holo.Light.CheckedTextView">
+        <item name="android:paddingTop">@dimen/CustomCheckedTextView_padding_top_bottom</item>
+        <item name="android:paddingBottom">@dimen/CustomCheckedTextView_padding_top_bottom</item>
+        <item name="android:textColor">@color/custom_checked_view_text_color</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="AppTheme.FilterTitle" parent="AppTheme">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/sf_medium</item>
+        <item name="android:textColor">@color/filter_title_text_color</item>
+    </style>
+
+    <style name="AppTheme.MainButtonStyle" parent="AppTheme">
+        <item name="android:background">@drawable/ic_background</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

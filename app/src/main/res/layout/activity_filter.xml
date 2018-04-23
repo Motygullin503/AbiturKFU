@@ -1,102 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/AppTheme"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.FilterActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/blue_toolbar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="121dp">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/AppTheme"
+        tools:context=".activities.FilterActivity">
 
-    </include>
-
-    <TextView
-        android:textSize="17sp"
-        android:fontFamily="@font/sf_medium"
-        android:id="@+id/education_form"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Форма обучения"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include" />
-
-
-    <RelativeLayout
-        android:gravity="center_horizontal"
-        android:id="@+id/group_weekdays"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/education_form">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="86dp"
-            android:background="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="141dp"
-            android:background="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <include
+            android:id="@+id/include"
+            layout="@layout/blue_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/education_type"
+            style="@style/AppTheme.FilterTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/button_back"
-            app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Тип обучения"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_study_forms" />
+
+        <TextView
+            android:id="@+id/education_form"
+            style="@style/AppTheme.FilterTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Форма обучения"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/include" />
+
+        <TextView
+            android:id="@+id/education_offices"
+            style="@style/AppTheme.FilterTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Филиалы"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/group_study_types" />
 
 
-    </RelativeLayout>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/group_study_forms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/education_form">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_first_forms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.333" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_second_forms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.666" />
+
+            <CheckedTextView
+                android:id="@+id/button3_forms"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bg_radio_button_end"
+                android:text="Заочная"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button2_forms"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button2_forms"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_radio_button_center"
+                android:text="Очно-заочная"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/horizontal_second_forms"
+                app:layout_constraintStart_toStartOf="@id/horizontal_first_forms"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button1_forms"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_bg_radio_button_start"
+                android:text="Очная"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button2_forms"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/show_filtered"
+        </android.support.constraint.ConstraintLayout>
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/ic_background"
-        android:enabled="false"
-        android:text="Показать"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_weekdays" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/group_study_types"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/education_type">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_first_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.333" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_second_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.666" />
+
+            <CheckedTextView
+                android:id="@+id/button3_types"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bg_radio_button_end"
+                android:text="Контракт"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button2_types"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button2_types"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_radio_button_center"
+                android:text="Грант"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/horizontal_second_types"
+                app:layout_constraintStart_toStartOf="@id/horizontal_first_types"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button1_types"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_bg_radio_button_start"
+                android:text="Бюджет"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button2_types"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-</android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/group_study_offices"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/education_offices">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_first_offices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.333" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/horizontal_second_offices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.666" />
+
+            <CheckedTextView
+                android:id="@+id/button4_offices"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_bg_radio_button_bottom"
+                android:text="Чистополь"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button2_offices" />
+
+            <CheckedTextView
+                android:id="@+id/button3_offices"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bg_radio_button_end_top"
+                android:text="Елабуга"
+                app:layout_constraintBottom_toTopOf="@id/button4_offices"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button2_offices"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button2_offices"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_radio_button_center_top"
+                android:text="Н. Челны"
+                app:layout_constraintBottom_toTopOf="@id/button4_offices"
+                app:layout_constraintEnd_toEndOf="@id/horizontal_second_offices"
+                app:layout_constraintStart_toStartOf="@id/horizontal_first_offices"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/button1_offices"
+                style="@style/AppTheme.CustomCheckedTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/selector_bg_radio_button_start_top"
+                android:text="Казань"
+                app:layout_constraintBottom_toTopOf="@id/button4_offices"
+                app:layout_constraintEnd_toStartOf="@+id/button2_offices"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/show_filtered"
+            style="@style/AppTheme.MainButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="32dp"
+            android:enabled="false"
+            android:text="Показать"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_study_offices" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
