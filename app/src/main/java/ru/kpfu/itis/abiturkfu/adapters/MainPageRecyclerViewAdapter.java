@@ -11,8 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.kpfu.itis.abiturkfu.entities.Post;
 import ru.kpfu.itis.abiturkfu.R;
+import ru.kpfu.itis.abiturkfu.entities.Post;
 
 /**
  * Created by Bulat on 02.04.2018 at 00:11.
@@ -25,7 +25,7 @@ public class MainPageRecyclerViewAdapter extends RecyclerView.Adapter<MainPageRe
     @Override
     public MainPageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_main_activity, parent, false);
+                .inflate(R.layout.item_main_fragment, parent, false);
         return new MainPageViewHolder(view);
     }
 
@@ -45,6 +45,7 @@ public class MainPageRecyclerViewAdapter extends RecyclerView.Adapter<MainPageRe
     }
 
     public void setData(List<Post> data) {
+        // TODO: 24.04.18 Add DiffUtils
         posts = data;
         notifyDataSetChanged();
     }
