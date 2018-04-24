@@ -19,7 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:parentActivityName=".activities.MainActivity" android:name=".activities.FilterActivity"/>
+        <activity
+            android:name=".activities.FilterActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.FacilityActivity"
+            android:parentActivityName=".activities.MainActivity" />
     </application>
 
 </manifest>
