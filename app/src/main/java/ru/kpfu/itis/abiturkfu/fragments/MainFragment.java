@@ -1,11 +1,14 @@
 package ru.kpfu.itis.abiturkfu.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,8 +45,15 @@ public class MainFragment extends Fragment {
         adapter = new MainPageRecyclerViewAdapter();
 
         r.list.setAdapter(adapter);
-        r.list.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView.LayoutManager layoutManager;
+        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager = new LinearLayoutManager(getContext());
+        } else {
+            layoutManager = new GridLayoutManager(getContext(), 2);
+        }
+        r.list.setLayoutManager(layoutManager);
 
+        // TODO: 24.04.18 clear it
         Post post = new Post("Высшая школа информационных систем и интеллектуальных технологий", "Средний балл по ЕГЭ:100", null);
         List<Post> posts = new ArrayList<>();
         posts.add(post);
