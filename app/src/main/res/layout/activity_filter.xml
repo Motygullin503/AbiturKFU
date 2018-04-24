@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/blue_toolbar"
+        <ru.kpfu.itis.abiturkfu.views.CenteredToolbar
+            android:id="@+id/my_toolbar"
+            style="@style/AppTheme.ToolbarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

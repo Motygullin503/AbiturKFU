@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.databinding.ActivityFilterBinding;
@@ -26,16 +25,11 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("Фильтры");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setElevation(0.0f);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        TextView title = toolbar.findViewById(R.id.toolbar_title);
-        title.setText("Фильтры");
 
         showFiltered = findViewById(R.id.show_filtered);
         showFiltered.setOnClickListener(this);
