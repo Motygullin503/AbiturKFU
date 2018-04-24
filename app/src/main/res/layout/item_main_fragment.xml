@@ -7,6 +7,9 @@
     android:layout_marginEnd="16dp"
     app:cardElevation="2dp"
     android:layout_marginTop="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_marginBottom="4dp"
     android:layout_height="wrap_content">
 
@@ -34,12 +37,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_medium"
                 android:text="Высшая школа ИТ и интеллектуальных систем"
-                android:textColor="#0068b4"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/exam_points"
-                android:textColor="#b1b1b1"
+                android:textColor="@color/secondary_text"
                 android:fontFamily="@font/sf_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

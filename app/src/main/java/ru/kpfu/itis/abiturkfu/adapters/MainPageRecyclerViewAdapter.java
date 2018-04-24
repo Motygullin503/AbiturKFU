@@ -19,7 +19,12 @@ import ru.kpfu.itis.abiturkfu.entities.Post;
  */
 public class MainPageRecyclerViewAdapter extends RecyclerView.Adapter<MainPageRecyclerViewAdapter.MainPageViewHolder> {
 
-    List<Post> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
+    private OnItemClickListener listener;
+
+    public MainPageRecyclerViewAdapter(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @NonNull
     @Override
@@ -36,6 +41,7 @@ public class MainPageRecyclerViewAdapter extends RecyclerView.Adapter<MainPageRe
         holder.text.setText(post.getTitle());
 
         holder.exam_points.setText(post.getExamPoints());
+        holder.itemView.setOnClickListener(v -> listener.onClick(v, post));
     }
 
 
@@ -64,5 +70,9 @@ public class MainPageRecyclerViewAdapter extends RecyclerView.Adapter<MainPageRe
             exam_points = itemView.findViewById(R.id.exam_points);
             contentPhoto = itemView.findViewById(R.id.content_photo);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(View view, Post post);
     }
 }

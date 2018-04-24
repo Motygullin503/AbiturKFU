@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.kpfu.itis.abiturkfu.R;
+import ru.kpfu.itis.abiturkfu.activities.FacilityActivity;
 import ru.kpfu.itis.abiturkfu.activities.FilterActivity;
 import ru.kpfu.itis.abiturkfu.adapters.MainPageRecyclerViewAdapter;
 import ru.kpfu.itis.abiturkfu.databinding.FragmentMainBinding;
@@ -42,7 +43,10 @@ public class MainFragment extends Fragment {
     }
 
     private void initRecyclerView() {
-        adapter = new MainPageRecyclerViewAdapter();
+        adapter = new MainPageRecyclerViewAdapter((view, post) -> {
+            Intent intent = new Intent(getContext(), FacilityActivity.class);
+            startActivity(intent);
+        });
 
         r.list.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager;
