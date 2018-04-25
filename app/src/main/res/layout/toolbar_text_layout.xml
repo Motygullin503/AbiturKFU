@@ -7,4 +7,5 @@
     android:layout_gravity="center"
     android:textColor="#ffffff"
     android:textSize="17sp"
+    android:fontFamily="@font/sf_pro_bold"
     tools:text="Мой тулбар, гык" />

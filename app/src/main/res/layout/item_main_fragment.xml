@@ -35,7 +35,7 @@
                 android:id="@+id/item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_medium"
+                android:fontFamily="@font/sf_pro_medium"
                 android:text="Высшая школа ИТ и интеллектуальных систем"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
@@ -43,7 +43,7 @@
             <TextView
                 android:id="@+id/exam_points"
                 android:textColor="@color/secondary_text"
-                android:fontFamily="@font/sf_regular"
+                android:fontFamily="@font/sf_pro_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Средний балл ЕГЭ:100" />

@@ -44,10 +44,10 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/sf_medium"
+                        android:fontFamily="@font/sf_pro_medium"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="16sp"
-                        tools:text="Высшая школа информационных технологий и информационных систем" />
+                        android:text="Высшая школа информационных технологий и информационных систем"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_exam_points"
@@ -56,6 +56,8 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textSize="13sp"
                         android:text="Средний балл ЕГЭ: 81"
                         android:textColor="@color/secondary_text" />
 
@@ -67,6 +69,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/sf_pro_medium"
+                        android:textSize="16sp"
                         android:drawableStart="@drawable/ic_location"
                         android:text="420008 г. Казань, ул. Кремлевская, 35"
                         android:textColor="@color/filter_title_text_color" />
@@ -79,6 +83,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/sf_pro_medium"
+                        android:textSize="16sp"
                         android:drawableStart="@drawable/ic_mail"
                         android:text="itis@kpfu.ru"
                         android:textColor="@color/filter_title_text_color" />
@@ -91,6 +97,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/sf_pro_medium"
+                        android:textSize="16sp"
                         android:drawableStart="@drawable/ic_phone"
                         android:text="(843) 221 34 33"
                         android:textColor="@color/filter_title_text_color" />
@@ -127,19 +135,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        style="@style/AppTheme.CardText"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:drawablePadding="16dp"
                         android:drawableTop="@drawable/ic_high_school"
-                        android:text="О факультете"
-                        android:textAlignment="center"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp" />
+                        android:text="О факультете" />
 
                 </android.support.v7.widget.CardView>
 
@@ -161,6 +166,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                     <TextView
+                        style="@style/AppTheme.CardText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
@@ -169,7 +175,7 @@
                         android:layout_marginTop="8dp"
                         android:drawablePadding="16dp"
                         android:drawableTop="@drawable/ic_plan"
-                        android:text="О факультете"
+                        android:text="План приёма"
                         android:textAlignment="center"
                         android:textColor="@color/grey"
                         android:textSize="16sp" />
