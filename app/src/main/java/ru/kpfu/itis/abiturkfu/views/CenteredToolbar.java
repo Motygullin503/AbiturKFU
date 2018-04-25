@@ -21,7 +21,6 @@ public class CenteredToolbar extends Toolbar {
 
     public CenteredToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        super.setTitle("");
         inflate(context, R.layout.toolbar_text_layout, this);
         titleView = this.findViewById(R.id.toolbar_title);
     }
