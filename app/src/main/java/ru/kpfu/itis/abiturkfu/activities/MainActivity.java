@@ -79,20 +79,28 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_main) {
-            showMainPage();
-        } else if (id == R.id.nav_calculate_exams) {
+        switch (id) {
+            case R.id.nav_main:
+                showMainPage();
+                break;
+            case R.id.nav_calculate_exams:
 
-        } else if (id == R.id.nav_abiturient_calendar) {
+                break;
+            case R.id.nav_abiturient_calendar:
 
-        } else if (id == R.id.nav_courses) {
+                break;
+            case R.id.nav_courses:
 
-        } else if (id == R.id.nav_contests) {
+                break;
+            case R.id.nav_contests:
 
-        } else if (id == R.id.nav_how_to_enter) {
+                break;
+            case R.id.nav_how_to_enter:
 
-        } else if (id == R.id.nav_about) {
+                break;
+            case R.id.nav_about:
 
+                break;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -111,15 +119,15 @@ public class MainActivity extends AppCompatActivity
         if (fragment == null) {
             try {
                 fragment = fragmentClass.newInstance();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, fragment, fragmentClass.getName() + SUFF)
-                        .commit();
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment, fragmentClass.getName() + SUFF)
+                .commit();
     }
 }

@@ -25,7 +25,6 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
 
-        toolbar.setTitle("Фильтры");
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

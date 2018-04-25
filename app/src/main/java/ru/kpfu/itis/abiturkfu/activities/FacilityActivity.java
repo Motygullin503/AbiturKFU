@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -19,7 +18,6 @@ public class FacilityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         r = DataBindingUtil.setContentView(this, R.layout.activity_facility);
 
-        r.myToolbar.setTitle("Факультет");
         setSupportActionBar(r.myToolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -31,7 +29,8 @@ public class FacilityActivity extends AppCompatActivity {
         });
 
         r.cvAboutFacility.setOnClickListener(v -> {
-
+            Intent i = new Intent(this, AboutFacilityActivity.class);
+            startActivity(i);
         });
         r.cvPlan.setOnClickListener(v -> {
 
@@ -43,7 +42,7 @@ public class FacilityActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
