@@ -1,4 +1,4 @@
-package ru.kpfu.itis.abiturkfu.activities;
+package ru.kpfu.itis.abiturkfu.view.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -7,19 +7,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import ru.kpfu.itis.abiturkfu.R;
-import ru.kpfu.itis.abiturkfu.fragments.MainFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
+import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String SUFF = "MAIN";
-    private TextView toolbarTitle;
+    private CenteredToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
 
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        toolbar = findViewById(R.id.my_toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0.0f);
@@ -129,5 +128,9 @@ public class MainActivity extends AppCompatActivity
                 .beginTransaction()
                 .replace(R.id.container, fragment, fragmentClass.getName() + SUFF)
                 .commit();
+    }
+
+    public void showLoading(boolean loading) {
+        toolbar.showLoading(loading);
     }
 }

@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.FacilityActivity">
+    tools:context=".view.activities.FacilityActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ru.kpfu.itis.abiturkfu.views.CenteredToolbar
+        <ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar
             android:id="@+id/my_toolbar"
             style="@style/AppTheme.ToolbarStyle"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/itis" />
+                        tools:srcCompat="@drawable/itis" />
 
                     <TextView
                         android:id="@+id/tv_facility_name"
@@ -46,7 +46,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/sf_pro_medium"
                         android:textColor="@color/colorPrimary"
-                        android:text="Высшая школа информационных технологий и информационных систем"
+                        tools:text="Высшая школа информационных технологий и информационных систем"
                         android:textSize="18sp" />
 
                     <TextView
@@ -58,7 +58,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/sf_pro_regular"
                         android:textSize="13sp"
-                        android:text="Средний балл ЕГЭ: 81"
+                        tools:text="Средний балл ЕГЭ: 81"
                         android:textColor="@color/secondary_text" />
 
                     <TextView
@@ -72,7 +72,7 @@
                         android:fontFamily="@font/sf_pro_medium"
                         android:textSize="16sp"
                         android:drawableStart="@drawable/ic_location"
-                        android:text="420008 г. Казань, ул. Кремлевская, 35"
+                        tools:text="420008 г. Казань, ул. Кремлевская, 35"
                         android:textColor="@color/filter_title_text_color" />
 
                     <TextView
@@ -86,7 +86,7 @@
                         android:fontFamily="@font/sf_pro_medium"
                         android:textSize="16sp"
                         android:drawableStart="@drawable/ic_mail"
-                        android:text="itis@kpfu.ru"
+                        tools:text="itis@kpfu.ru"
                         android:textColor="@color/filter_title_text_color" />
 
                     <TextView
@@ -100,7 +100,7 @@
                         android:fontFamily="@font/sf_pro_medium"
                         android:textSize="16sp"
                         android:drawableStart="@drawable/ic_phone"
-                        android:text="(843) 221 34 33"
+                        tools:text="(843) 221 34 33"
                         android:textColor="@color/filter_title_text_color" />
 
                     <Button

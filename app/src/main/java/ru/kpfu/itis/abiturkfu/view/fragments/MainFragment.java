@@ -1,10 +1,12 @@
-package ru.kpfu.itis.abiturkfu.fragments;
+package ru.kpfu.itis.abiturkfu.view.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,36 +18,50 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.inject.Inject;
 
+import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.R;
-import ru.kpfu.itis.abiturkfu.activities.FacilityActivity;
-import ru.kpfu.itis.abiturkfu.activities.FilterActivity;
-import ru.kpfu.itis.abiturkfu.adapters.MainPageRecyclerViewAdapter;
 import ru.kpfu.itis.abiturkfu.databinding.FragmentMainBinding;
-import ru.kpfu.itis.abiturkfu.entities.Post;
+import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
+import ru.kpfu.itis.abiturkfu.view.activities.FacilityActivity;
+import ru.kpfu.itis.abiturkfu.view.activities.FilterActivity;
+import ru.kpfu.itis.abiturkfu.view.adapters.MainPageRecyclerViewAdapter;
 
 
 public class MainFragment extends Fragment {
     private MainPageRecyclerViewAdapter adapter;
     private FragmentMainBinding r;
 
+    @Inject
+    AbiturientRepository repository;
+
+    @SuppressLint("CheckResult")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        App.getComponent().inject(this);
         r = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
         setHasOptionsMenu(true);
 
         initRecyclerView();
 
+        repository.getAllFacilities(savedInstanceState == null)
+                .observe(this, facilities -> adapter.setData(facilities));
+
+        repository.getStatusLiveData()
+                .observe(this, s -> {
+                    if (s != null) {
+                        Snackbar.make(r.getRoot(), s, Snackbar.LENGTH_LONG).show();
+                    }
+                });
+
         return r.getRoot();
     }
 
     private void initRecyclerView() {
-        adapter = new MainPageRecyclerViewAdapter((view, post) -> {
-            Intent intent = new Intent(getContext(), FacilityActivity.class);
-            startActivity(intent);
+        adapter = new MainPageRecyclerViewAdapter((view, id) -> {
+            FacilityActivity.start(getContext(), id);
         });
 
         r.list.setAdapter(adapter);
@@ -56,12 +72,6 @@ public class MainFragment extends Fragment {
             layoutManager = new GridLayoutManager(getContext(), 2);
         }
         r.list.setLayoutManager(layoutManager);
-
-        // TODO: 24.04.18 clear it
-        Post post = new Post("Высшая школа информационных систем и интеллектуальных технологий", "Средний балл по ЕГЭ:100", null);
-        List<Post> posts = new ArrayList<>();
-        posts.add(post);
-        adapter.setData(posts);
     }
 
     @Override

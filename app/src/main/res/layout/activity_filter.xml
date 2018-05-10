@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <ru.kpfu.itis.abiturkfu.views.CenteredToolbar
+        <ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar
             android:id="@+id/my_toolbar"
             style="@style/AppTheme.ToolbarStyle"
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:theme="@style/AppTheme"
-                tools:context=".activities.FilterActivity">
+                tools:context=".view.activities.FilterActivity">
 
                 <TextView
                     android:id="@+id/education_type"
@@ -285,7 +285,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"
                     android:layout_marginTop="32dp"
-                    android:enabled="false"
                     android:text="Показать"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

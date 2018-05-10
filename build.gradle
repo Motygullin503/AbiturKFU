@@ -15,6 +15,12 @@ buildscript {
     }
 }
 
+ext.support_version = '27.1.1'
+ext.dagger_version = '2.11'
+ext.retrofit_version = '2.4.0'
+ext.glide_version = '4.7.1'
+ext.room_version = '1.1.0-rc1'
+
 allprojects {
     repositories {
         google()

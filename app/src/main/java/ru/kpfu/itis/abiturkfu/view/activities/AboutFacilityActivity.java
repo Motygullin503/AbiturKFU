@@ -1,4 +1,4 @@
-package ru.kpfu.itis.abiturkfu.activities;
+package ru.kpfu.itis.abiturkfu.view.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
