@@ -6,12 +6,12 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,6 +21,7 @@ import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.databinding.ActivityFilteredFacilitiesBinding;
 import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
+import ru.kpfu.itis.abiturkfu.model.repository.ResponseLiveData;
 import ru.kpfu.itis.abiturkfu.view.adapters.MainPageRecyclerViewAdapter;
 
 public class FilteredFacilitiesActivity extends AppCompatActivity {
@@ -57,18 +58,13 @@ public class FilteredFacilitiesActivity extends AppCompatActivity {
 
         r.myToolbar.showLoading(true);
         repository.getFacilitiesByFilter(cities, forms, types)
-                .observe(this, facilities -> {
-                    adapter.setData(facilities);
-                    r.myToolbar.showLoading(false);
-                });
+                .observe(
+                        this,
+                        facilities -> adapter.setData(facilities),
+                        status -> r.myToolbar.showLoading(status == ResponseLiveData.Status.LOADING),
+                        throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
+                );
 
-        repository.getStatusLiveData()
-                .observe(this, s -> {
-                    if (s != null) {
-                        r.myToolbar.showLoading(false);
-                        Snackbar.make(r.getRoot(), s, Snackbar.LENGTH_LONG).show();
-                    }
-                });
     }
 
     private void initRecyclerView() {

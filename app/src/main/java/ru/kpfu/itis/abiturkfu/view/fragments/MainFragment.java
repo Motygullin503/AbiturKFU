@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -24,8 +24,10 @@ import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.databinding.FragmentMainBinding;
 import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
+import ru.kpfu.itis.abiturkfu.model.repository.ResponseLiveData;
 import ru.kpfu.itis.abiturkfu.view.activities.FacilityActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FilterActivity;
+import ru.kpfu.itis.abiturkfu.view.activities.MainActivity;
 import ru.kpfu.itis.abiturkfu.view.adapters.MainPageRecyclerViewAdapter;
 
 
@@ -47,14 +49,12 @@ public class MainFragment extends Fragment {
         initRecyclerView();
 
         repository.getAllFacilities(savedInstanceState == null)
-                .observe(this, facilities -> adapter.setData(facilities));
-
-        repository.getStatusLiveData()
-                .observe(this, s -> {
-                    if (s != null) {
-                        Snackbar.make(r.getRoot(), s, Snackbar.LENGTH_LONG).show();
-                    }
-                });
+                .observe(
+                        this,
+                        facilities -> adapter.setData(facilities),
+                        status -> ((MainActivity) getActivity()).showLoading(status == ResponseLiveData.Status.LOADING),
+                        throwable -> Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show()
+                );
 
         return r.getRoot();
     }

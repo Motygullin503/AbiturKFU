@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -17,6 +18,7 @@ import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.databinding.ActivityFacilityBinding;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
+import ru.kpfu.itis.abiturkfu.model.repository.ResponseLiveData;
 
 public class FacilityActivity extends AppCompatActivity {
     private ActivityFacilityBinding r;
@@ -51,9 +53,13 @@ public class FacilityActivity extends AppCompatActivity {
 
         });
 
-        repository
-                .getFacilityById(id, savedInstanceState == null)
-                .observe(this, this::fillInfo);
+        repository.getFacilityById(id, savedInstanceState == null)
+                .observe(
+                        this,
+                        this::fillInfo,
+                        status -> r.myToolbar.showLoading(status == ResponseLiveData.Status.LOADING),
+                        throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
+                );
     }
 
     private void fillInfo(Facility facility) {
