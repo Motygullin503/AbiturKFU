@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.kpfu.itis.abiturkfu">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".view.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,7 +22,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:parentActivityName=".activities.MainActivity" android:name=".activities.FilterActivity"/>
+        <activity
+            android:name=".view.activities.FilterActivity"
+            android:label="Фильтры"
+            android:parentActivityName=".view.activities.MainActivity" />
+        <activity
+            android:name=".view.activities.FacilityActivity"
+            android:label="Факультет" />
+        <activity
+            android:name=".view.activities.AboutFacilityActivity"
+            android:label="О факультете" />
+        <activity android:name=".view.activities.PlanActivity" />
+        <activity
+            android:name=".view.activities.FilteredFacilitiesActivity"
+            android:label="Факультеты" />
     </application>
 
 </manifest>
