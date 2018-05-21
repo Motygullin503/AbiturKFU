@@ -2,7 +2,6 @@ package ru.kpfu.itis.abiturkfu.model.repository;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.Nullable;
 
 import java.util.List;
@@ -16,6 +15,7 @@ import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.model.database_module.AbiturientDatabase;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 import ru.kpfu.itis.abiturkfu.model.entities.Result;
+import ru.kpfu.itis.abiturkfu.model.entities.Speciality;
 import ru.kpfu.itis.abiturkfu.model.network_module.AbiturientService;
 
 /**
@@ -24,7 +24,6 @@ import ru.kpfu.itis.abiturkfu.model.network_module.AbiturientService;
  */
 public class AbiturientRepository {
     private static final int STATUS_OK = 200;
-    private static MutableLiveData<String> statusLiveData;
 
     @Inject
     AbiturientService service;
@@ -34,7 +33,6 @@ public class AbiturientRepository {
 
     public AbiturientRepository() {
         App.getComponent().inject(this);
-        statusLiveData = new MutableLiveData<>();
     }
 
     public ResponseLiveData<List<Facility>> getAllFacilities(boolean forceNetLoad) {
@@ -68,6 +66,20 @@ public class AbiturientRepository {
             data.postBody(result);
         };
         loader.load(service.getAllFacilitiesByFilter(cities, forms, types), data);
+        return data;
+    }
+
+    public ResponseLiveData<List<Speciality>> getSpecialitiesByFacilityId(int facilityId) {
+        ResponseLiveData<List<Speciality>> data = new ResponseLiveData<>();
+        Loader<List<Speciality>> loader = data::postBody;
+        loader.load(service.getSpecialitiesByFacilityId(facilityId), data);
+        return data;
+    }
+
+    public ResponseLiveData<Speciality> getSpecialityById(int id) {
+        ResponseLiveData<Speciality> data = new ResponseLiveData<>();
+        Loader<Speciality> loader = data::postBody;
+        loader.load(service.getSpecialitiesById(id), data);
         return data;
     }
 

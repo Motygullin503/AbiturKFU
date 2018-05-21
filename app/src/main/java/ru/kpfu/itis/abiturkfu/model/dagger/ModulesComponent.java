@@ -7,8 +7,10 @@ import ru.kpfu.itis.abiturkfu.model.database_module.DatabaseModule;
 import ru.kpfu.itis.abiturkfu.model.network_module.NetModule;
 import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
 import ru.kpfu.itis.abiturkfu.model.repository.RepositoryModule;
+import ru.kpfu.itis.abiturkfu.view.activities.AboutExamsActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FacilityActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FilteredFacilitiesActivity;
+import ru.kpfu.itis.abiturkfu.view.activities.PlanActivity;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 
 /**
@@ -24,4 +26,8 @@ public interface ModulesComponent {
     void inject(FilteredFacilitiesActivity activity);
 
     void inject(AbiturientRepository repository);
+
+    void inject(PlanActivity planActivity);
+
+    void inject(AboutExamsActivity aboutExamsActivity);
 }

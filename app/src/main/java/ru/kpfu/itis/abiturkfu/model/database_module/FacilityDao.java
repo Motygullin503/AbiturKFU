@@ -12,7 +12,7 @@ import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 
 @Dao
 public interface FacilityDao {
-
+    // TODO: 21.05.18 add transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Facility... facility);
 

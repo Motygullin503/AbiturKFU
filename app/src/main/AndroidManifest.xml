@@ -32,10 +32,15 @@
         <activity
             android:name=".view.activities.AboutFacilityActivity"
             android:label="О факультете" />
-        <activity android:name=".view.activities.PlanActivity" />
+        <activity
+            android:name=".view.activities.PlanActivity"
+            android:label="План приёма" />
         <activity
             android:name=".view.activities.FilteredFacilitiesActivity"
             android:label="Факультеты" />
+        <activity
+            android:name=".view.activities.AboutExamsActivity"
+            android:label="Об экзаменах" />
     </application>
 
 </manifest>

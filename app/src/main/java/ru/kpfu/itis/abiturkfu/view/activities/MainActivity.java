@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ru.kpfu.itis.abiturkfu.R;
+import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_about:
-
+                showAboutUs();
                 break;
         }
 
@@ -111,6 +112,11 @@ public class MainActivity extends AppCompatActivity
         //toolbarTitle.setText("Главное");
         getSupportActionBar().setTitle("Главное");
         setFragmentByClass(MainFragment.class);
+    }
+
+    private void showAboutUs() {
+        getSupportActionBar().setTitle("О нас");
+        setFragmentByClass(AboutUsFragment.class);
     }
 
     private void setFragmentByClass(Class<? extends Fragment> fragmentClass) {
