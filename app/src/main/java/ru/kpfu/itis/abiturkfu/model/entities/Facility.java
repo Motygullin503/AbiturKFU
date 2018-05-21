@@ -1,10 +1,13 @@
 package ru.kpfu.itis.abiturkfu.model.entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
 
 /**
  * This class store main information about facility and uses in {@link ru.kpfu.itis.abiturkfu.model.database_module.AbiturientDatabase}
@@ -21,8 +24,11 @@ public class Facility implements Serializable {
     private String email;
     private String phone;
     private String website;
-    // TODO: 05.05.18 add about_facultets
+    private String description;
 
+    @Ignore
+    @SerializedName("about_facultets")
+    private List<AboutFacultets> aboutFacultets;
 
     public int getId() {
         return id;
@@ -96,34 +102,25 @@ public class Facility implements Serializable {
         this.website = website;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Facility facility = (Facility) o;
-        return id == facility.id &&
-                Double.compare(facility.middle_score, middle_score) == 0 &&
-                Objects.equals(name, facility.name) &&
-                Objects.equals(image_link, facility.image_link) &&
-                Objects.equals(city, facility.city) &&
-                Objects.equals(address, facility.address) &&
-                Objects.equals(email, facility.email) &&
-                Objects.equals(phone, facility.phone) &&
-                Objects.equals(website, facility.website);
+    public String getDescription() {
+        if (description != null) {
+            return description;
+        }
+        if (aboutFacultets != null && aboutFacultets.get(0) != null) {
+            return aboutFacultets.get(0).getDescription();
+        }
+        return null;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, middle_score, image_link, city, address, email, phone, website);
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Facility{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+    public List<AboutFacultets> getAboutFacultets() {
+        return aboutFacultets;
+    }
+
+    public void setAboutFacultets(List<AboutFacultets> aboutFacultets) {
+        this.aboutFacultets = aboutFacultets;
     }
 }

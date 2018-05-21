@@ -1,5 +1,7 @@
 package ru.kpfu.itis.abiturkfu.view.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +11,14 @@ import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.databinding.ActivityAboutFacilityBinding;
 
 public class AboutFacilityActivity extends AppCompatActivity {
+    private static final String KEY_DESCRIPTION = "DESCRIPTION";
     private ActivityAboutFacilityBinding r;
+
+    public static void start(Context context, String description) {
+        Intent starter = new Intent(context, AboutFacilityActivity.class);
+        starter.putExtra(KEY_DESCRIPTION, description);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +30,8 @@ public class AboutFacilityActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        r.tvAbout.setText("Высшая школа  информационных технологий и информационных систем (ИТИС) -  инновационный ИТ-факультет КФУ, который был основан в 2011 году совместными усилиями Министерства информатизации и связи РТ, Казанского федерального университета, мировых брендов IBM,HP, Oracle, представителями крупнейших IT-компаний региона.Высшая школа  информационных технологий и информационных систем (ИТИС) -  инновационный ИТ-факультет КФУ, который был основан в 2011 году совместными усилиями Министерства информатизации и связи РТ, Казанского федерального университета, мировых брендов IBM,HP, Oracle, представителями крупнейших IT-компаний региона.");
+        String description = getIntent().getStringExtra(KEY_DESCRIPTION);
+        r.tvAbout.setText(description);
     }
 
     @Override

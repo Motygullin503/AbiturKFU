@@ -23,6 +23,8 @@ import ru.kpfu.itis.abiturkfu.model.repository.ResponseLiveData;
 public class FacilityActivity extends AppCompatActivity {
     private ActivityFacilityBinding r;
     private static final String KEY_FACILITY_ID = "FACILITY_ID";
+    private int facilityId;
+    private Facility facility;
 
     @Inject
     AbiturientRepository repository;
@@ -38,22 +40,18 @@ public class FacilityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         r = DataBindingUtil.setContentView(this, R.layout.activity_facility);
         App.getComponent().inject(this);
-        int id = getIntent().getIntExtra(KEY_FACILITY_ID, 0);
+        facilityId = getIntent().getIntExtra(KEY_FACILITY_ID, 0);
 
         setSupportActionBar(r.myToolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        r.cvAboutFacility.setOnClickListener(v -> {
-            Intent i = new Intent(this, AboutFacilityActivity.class);
-            startActivity(i);
-        });
         r.cvPlan.setOnClickListener(v -> {
-
+            PlanActivity.start(this, facilityId);
         });
 
-        repository.getFacilityById(id, savedInstanceState == null)
+        repository.getFacilityById(facilityId, savedInstanceState == null)
                 .observe(
                         this,
                         this::fillInfo,
@@ -63,7 +61,9 @@ public class FacilityActivity extends AppCompatActivity {
     }
 
     private void fillInfo(Facility facility) {
+
         if (facility != null) {
+            r.cvAboutFacility.setOnClickListener(v -> AboutFacilityActivity.start(this, facility.getDescription()));
             r.tvFacilityName.setText(facility.getName());
             r.tvPhone.setText(facility.getPhone());
             r.tvMail.setText(facility.getEmail());
