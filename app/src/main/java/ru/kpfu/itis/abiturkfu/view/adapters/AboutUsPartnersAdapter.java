@@ -1,13 +1,11 @@
 package ru.kpfu.itis.abiturkfu.view.adapters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -42,7 +40,7 @@ public class AboutUsPartnersAdapter extends RecyclerView.Adapter<AboutUsPartners
 
     @Override
     public int getItemCount() {
-        return partners.size();
+        return partners == null ? 0 : partners.size();
     }
 
     public void setData(List<Partner> partners) {

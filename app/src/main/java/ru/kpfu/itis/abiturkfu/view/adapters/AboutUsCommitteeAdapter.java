@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -42,7 +41,7 @@ public class AboutUsCommitteeAdapter extends RecyclerView.Adapter<AboutUsCommitt
 
     @Override
     public int getItemCount() {
-        return committees.size();
+        return committees == null ? 0 : committees.size();
     }
 
     public void setData(List<Committee> committees) {

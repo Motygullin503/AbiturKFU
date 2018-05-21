@@ -55,7 +55,6 @@ public class PlanActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         adapter = new PlanPageRecyclerViewAdapter((view, specialityId) -> {
-            // TODO: 16.05.18 Add reaction
             AboutExamsActivity.start(this, specialityId);
         });
 
