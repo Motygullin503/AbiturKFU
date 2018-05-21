@@ -1,33 +1,33 @@
 package ru.kpfu.itis.abiturkfu.view.fragments;
 
-import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import ru.kpfu.itis.abiturkfu.R;
-import ru.kpfu.itis.abiturkfu.databinding.FragmentMainBinding;
+import ru.kpfu.itis.abiturkfu.model.entities.Committee;
+import ru.kpfu.itis.abiturkfu.model.entities.Partner;
+import ru.kpfu.itis.abiturkfu.model.entities.PartnerAndCommittee;
+import ru.kpfu.itis.abiturkfu.view.adapters.AboutUsCommitteeAdapter;
+import ru.kpfu.itis.abiturkfu.view.adapters.AboutUsPartnersAdapter;
 
 
 public class AboutUsFragment extends Fragment {
 
-    private FragmentMainBinding r;
 
-    private OnFragmentInteractionListener mListener;
+    RecyclerView rvPartners;
+    RecyclerView rvCommittees;
+    AboutUsPartnersAdapter aboutUsPartnersAdapter;
+    AboutUsCommitteeAdapter aboutUsCommitteeAdapter;
+
 
     public AboutUsFragment() {
-
-    }
-
-
-    public static AboutUsFragment newInstance() {
-        AboutUsFragment fragment = new AboutUsFragment();
-
-        return fragment;
     }
 
     @Override
@@ -39,36 +39,45 @@ public class AboutUsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        r = DataBindingUtil.inflate(inflater, R.layout.fragment_about_us, container, false);
+        View view = inflater.inflate(R.layout.fragment_about_us, container, false);
 
-        return r.getRoot();
-    }
+        rvPartners = view.findViewById(R.id.rv_partners);
+        rvCommittees = view.findViewById(R.id.rv_priem);
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        initializeRecyclerViews();
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+        return view;
     }
 
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+    public void initializeRecyclerViews() {
+        aboutUsCommitteeAdapter = new AboutUsCommitteeAdapter();
+        aboutUsPartnersAdapter = new AboutUsPartnersAdapter();
+
+        rvPartners.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPartners.setAdapter(aboutUsPartnersAdapter);
+
+        rvCommittees.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCommittees.setAdapter(aboutUsCommitteeAdapter);
     }
+
+
+    public void fill(PartnerAndCommittee partnerAndCommittee) {
+
+        fillPartnersAdapter(partnerAndCommittee.getPartners());
+
+        fillCommitteeAdapter(partnerAndCommittee.getCommittee());
+
+    }
+
+    private void fillCommitteeAdapter(List<Committee> committee) {
+        aboutUsCommitteeAdapter.setData(committee);
+    }
+
+    private void fillPartnersAdapter(List<Partner> partners) {
+        aboutUsPartnersAdapter.setData(partners);
+    }
+
+
 }
