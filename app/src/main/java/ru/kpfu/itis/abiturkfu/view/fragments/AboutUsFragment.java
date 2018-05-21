@@ -16,6 +16,7 @@ import ru.kpfu.itis.abiturkfu.model.entities.Partner;
 import ru.kpfu.itis.abiturkfu.model.entities.PartnerAndCommittee;
 import ru.kpfu.itis.abiturkfu.view.adapters.AboutUsCommitteeAdapter;
 import ru.kpfu.itis.abiturkfu.view.adapters.AboutUsPartnersAdapter;
+import ru.kpfu.itis.abiturkfu.view.views.CirclePagerIndicatorDecoration;
 
 
 public class AboutUsFragment extends Fragment {
@@ -60,6 +61,7 @@ public class AboutUsFragment extends Fragment {
 
         rvCommittees.setLayoutManager(new LinearLayoutManager(getContext()));
         rvCommittees.setAdapter(aboutUsCommitteeAdapter);
+        rvCommittees.addItemDecoration(new CirclePagerIndicatorDecoration());
     }
 
 

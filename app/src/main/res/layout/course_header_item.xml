@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_category"
+        android:paddingStart="22dp"
+        android:paddingTop="8dp"
+        android:text="Для 11 класса"
+        android:textColor="#4D4D4D"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/ic_header"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+</LinearLayout>

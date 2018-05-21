@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_courses:
-
+                showCourses();
                 break;
             case R.id.nav_contests:
 
@@ -117,6 +118,11 @@ public class MainActivity extends AppCompatActivity
     private void showAboutUs() {
         getSupportActionBar().setTitle("О нас");
         setFragmentByClass(AboutUsFragment.class);
+    }
+
+    private void showCourses() {
+        getSupportActionBar().setTitle("Курсы");
+        setFragmentByClass(CoursesFragment.class);
     }
 
     private void setFragmentByClass(Class<? extends Fragment> fragmentClass) {
