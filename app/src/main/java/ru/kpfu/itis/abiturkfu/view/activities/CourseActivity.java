@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,7 @@ public class CourseActivity extends AppCompatActivity {
     TextView courseEnlistment;
     TextView courseName;
     CenteredToolbar toolbar;
+    CardView steps;
 
     @Inject
     AbiturientRepository repository;
@@ -50,6 +52,7 @@ public class CourseActivity extends AppCompatActivity {
         courseInfo = findViewById(R.id.course_info);
         courseEnlistment = findViewById(R.id.course_enlistment);
         courseName = findViewById(R.id.tv_name);
+        steps = findViewById(R.id.cv_steps);
 
         goToSite = findViewById(R.id.btn_web_site);
         goToSite.setOnClickListener(view -> {
@@ -114,7 +117,11 @@ public class CourseActivity extends AppCompatActivity {
         courseInfo.setText(course.getDescription());
         courseEnlistment.setText(course.getEnlistment());
         courseName.setText(course.getName());
-
+        if (course.getEnlistment() == null || course.getEnlistment().isEmpty()){
+            steps.setVisibility(View.GONE);
+        } else {
+            steps.setVisibility(View.VISIBLE);
+        }
 
         for (CourseCategory category : course.getCourseCategories()) {
             int id = category.getId();
