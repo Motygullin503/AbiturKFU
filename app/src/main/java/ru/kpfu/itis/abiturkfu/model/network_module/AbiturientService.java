@@ -25,6 +25,8 @@ public interface AbiturientService {
             @Query("form[]") List<String> forms,
             @Query("type[]") List<String> types);
 
+    @GET("/api/v1/calculator")
+    Observable<Result<List<Facility>>> getAllFacilitiesBySubjects(@Query("subjects[]") List<String> subjects);
 
     @GET("api/v1/facultet/{id}")
     Observable<Result<Facility>> getFacilityById(@Path("id") int id);

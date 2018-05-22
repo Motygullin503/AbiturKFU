@@ -28,6 +28,8 @@ public class FilteredFacilitiesActivity extends AppCompatActivity {
     private static final String KEY_CITIES = "CITIES";
     private static final String KEY_FORMS = "FORMS";
     private static final String KEY_TYPES = "TYPES";
+    private static final String KEY_SUBJECTS = "SUBJECTS";
+    private static final String KEY_BY_SUBJECT = "BY_SUBJECT";
     @Inject
     AbiturientRepository repository;
     private MainPageRecyclerViewAdapter adapter;
@@ -38,6 +40,14 @@ public class FilteredFacilitiesActivity extends AppCompatActivity {
         starter.putStringArrayListExtra(KEY_CITIES, cities);
         starter.putStringArrayListExtra(KEY_FORMS, forms);
         starter.putStringArrayListExtra(KEY_TYPES, types);
+        starter.putExtra(KEY_BY_SUBJECT, false);
+        context.startActivity(starter);
+    }
+
+    public static void start(Context context, ArrayList<String> subjects) {
+        Intent starter = new Intent(context, FilteredFacilitiesActivity.class);
+        starter.putStringArrayListExtra(KEY_SUBJECTS, subjects);
+        starter.putExtra(KEY_BY_SUBJECT, true);
         context.startActivity(starter);
     }
 
@@ -55,15 +65,24 @@ public class FilteredFacilitiesActivity extends AppCompatActivity {
         ArrayList<String> cities = getIntent().getStringArrayListExtra(KEY_CITIES);
         ArrayList<String> forms = getIntent().getStringArrayListExtra(KEY_FORMS);
         ArrayList<String> types = getIntent().getStringArrayListExtra(KEY_TYPES);
+        ArrayList<String> subjects = getIntent().getStringArrayListExtra(KEY_SUBJECTS);
+        boolean bySubject = getIntent().getBooleanExtra(KEY_BY_SUBJECT, false);
 
-        r.myToolbar.showLoading(true);
-        repository.getFacilitiesByFilter(cities, forms, types)
-                .observe(
-                        this,
-                        facilities -> adapter.setData(facilities),
-                        status -> r.myToolbar.showLoading(status == ResponseLiveData.Status.LOADING),
-                        throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
-                );
+        if (bySubject) {
+            repository.getFacilitiesBySubject(subjects).observe(
+                    this,
+                    facilities -> adapter.setData(facilities),
+                    status -> r.myToolbar.showLoading(status == ResponseLiveData.Status.LOADING),
+                    throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
+            );
+        } else {
+            repository.getFacilitiesByFilter(cities, forms, types).observe(
+                    this,
+                    facilities -> adapter.setData(facilities),
+                    status -> r.myToolbar.showLoading(status == ResponseLiveData.Status.LOADING),
+                    throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
+            );
+        }
 
     }
 

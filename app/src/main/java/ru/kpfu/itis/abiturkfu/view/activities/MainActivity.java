@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.CalculatorFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CalendarFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity
                 setFragmentByClass(MainFragment.class);
                 break;
             case R.id.nav_calculate_exams:
-
+                setFragmentByClass(CalculatorFragment.class);
                 break;
             case R.id.nav_abiturient_calendar:
                 setFragmentByClass(CalendarFragment.class);

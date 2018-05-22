@@ -72,6 +72,16 @@ public class AbiturientRepository {
         return data;
     }
 
+    public ResponseLiveData<List<Facility>> getFacilitiesBySubject(List<String> subjects) {
+        ResponseLiveData<List<Facility>> data = new ResponseLiveData<>();
+        Loader<List<Facility>> loader = result -> {
+            database.getFacilityDao().insertAll(result.toArray(new Facility[result.size()]));
+            data.postBody(result);
+        };
+        loader.load(service.getAllFacilitiesBySubjects(subjects), data);
+        return data;
+    }
+
     public ResponseLiveData<List<Speciality>> getSpecialitiesByFacilityId(int facilityId) {
         ResponseLiveData<List<Speciality>> data = new ResponseLiveData<>();
         Loader<List<Speciality>> loader = data::postBody;
