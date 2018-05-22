@@ -45,6 +45,7 @@ public class AboutUsPartnersAdapter extends RecyclerView.Adapter<AboutUsPartners
 
     public void setData(List<Partner> partners) {
         this.partners = partners;
+        notifyDataSetChanged();
     }
     public class AboutUsPartnersViewHolder extends RecyclerView.ViewHolder{
 

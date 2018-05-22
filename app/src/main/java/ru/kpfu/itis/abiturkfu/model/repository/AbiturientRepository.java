@@ -13,7 +13,9 @@ import io.reactivex.internal.operators.observable.ObservableError;
 import io.reactivex.schedulers.Schedulers;
 import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.model.database_module.AbiturientDatabase;
+import ru.kpfu.itis.abiturkfu.model.entities.Course;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
+import ru.kpfu.itis.abiturkfu.model.entities.PartnerAndCommittee;
 import ru.kpfu.itis.abiturkfu.model.entities.Result;
 import ru.kpfu.itis.abiturkfu.model.entities.Speciality;
 import ru.kpfu.itis.abiturkfu.model.network_module.AbiturientService;
@@ -80,6 +82,27 @@ public class AbiturientRepository {
         ResponseLiveData<Speciality> data = new ResponseLiveData<>();
         Loader<Speciality> loader = data::postBody;
         loader.load(service.getSpecialitiesById(id), data);
+        return data;
+    }
+
+    public ResponseLiveData<List<Course>> getCourses() {
+        ResponseLiveData<List<Course>> data = new ResponseLiveData<>();
+        Loader<List<Course>> loader = data::postBody;
+        loader.load(service.getCourses(), data);
+        return data;
+    }
+
+    public ResponseLiveData<Course> getCourseById(int id) {
+        ResponseLiveData<Course> data = new ResponseLiveData<>();
+        Loader<Course> loader = data::postBody;
+        loader.load(service.getCourseById(id), data);
+        return data;
+    }
+
+    public ResponseLiveData<PartnerAndCommittee> getAboutUs() {
+        ResponseLiveData<PartnerAndCommittee> data = new ResponseLiveData<>();
+        Loader<PartnerAndCommittee> loader = data::postBody;
+        loader.load(service.getAboutUs(), data);
         return data;
     }
 

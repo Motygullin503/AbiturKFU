@@ -3,20 +3,25 @@ package ru.kpfu.itis.abiturkfu.view.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.inject.Inject;
 
+import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.model.entities.Course;
 import ru.kpfu.itis.abiturkfu.model.entities.CourseCategory;
 import ru.kpfu.itis.abiturkfu.model.entities.CourseFee;
+import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
+import ru.kpfu.itis.abiturkfu.model.repository.ResponseLiveData;
+import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -25,6 +30,10 @@ public class CourseActivity extends AppCompatActivity {
     Course course;
     TextView courseInfo;
     TextView courseEnlistment;
+    CenteredToolbar toolbar;
+
+    @Inject
+    AbiturientRepository repository;
 
     private static final String KEY_COURSE_ID = "COURSE_ID";
 
@@ -32,7 +41,11 @@ public class CourseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+        App.getComponent().inject(this);
 
+        toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         courseInfo = findViewById(R.id.course_info);
         courseEnlistment = findViewById(R.id.course_enlistment);
 
@@ -47,6 +60,15 @@ public class CourseActivity extends AppCompatActivity {
         });
 
         container = findViewById(R.id.view_container);
+
+        int id = getIntent().getIntExtra(KEY_COURSE_ID, 0);
+
+        repository.getCourseById(id).observe(
+                this,
+                this::fill,
+                status -> toolbar.showLoading(status == ResponseLiveData.Status.LOADING),
+                throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show()
+        );
     }
 
     public static void start (Context context, int courseId) {
@@ -57,7 +79,7 @@ public class CourseActivity extends AppCompatActivity {
 
     LinearLayout inflateCourseCategory(CourseCategory category) {
         View headerView = View.inflate(this, R.layout.course_header_item, null);
-        TextView tv_type = headerView.findViewById(R.id.tv_type);
+        TextView tv_type = headerView.findViewById(R.id.tv_category);
         tv_type.setText(category.getTitle());
 
         container.addView(headerView);
@@ -71,7 +93,7 @@ public class CourseActivity extends AppCompatActivity {
         TextView tv_amount = view.findViewById(R.id.tv_rubles);
 
         tv_type.setText(fee.getTitle());
-        tv_fee.setText(fee.getPrice());
+        tv_fee.setText(String.valueOf(fee.getPrice()));
 
         if (fee.getPayPerYear()) {
             tv_amount.setText("руб. в год");
@@ -102,4 +124,11 @@ public class CourseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

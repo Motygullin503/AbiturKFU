@@ -25,6 +25,7 @@ public class NetModule {
     @Singleton
     OkHttpClient getOkHttpClient(HttpLoggingInterceptor interceptor) {
         return new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(1, TimeUnit.MINUTES)
                 .writeTimeout(1, TimeUnit.MINUTES)

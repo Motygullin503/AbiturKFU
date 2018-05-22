@@ -70,6 +70,15 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="AppTheme.Calendar" parent="AppTheme">
+        <item name="fontFamily">@font/sf_pro_medium</item>
+        <item name="android:textColorPrimaryInverse">@color/colorPrimary</item>
+        <item name="colorAccent">#FFF</item>
+        <item name="android:textColorPrimary">#FFF</item>
+        <item name="android:textColorSecondary">#FFF</item>
+        <item name="android:textColorSecondaryInverse">@color/colorPrimary</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

@@ -46,6 +46,7 @@ public class AboutUsCommitteeAdapter extends RecyclerView.Adapter<AboutUsCommitt
 
     public void setData(List<Committee> committees) {
         this.committees = committees;
+        notifyDataSetChanged();
     }
 
     public class AboutUsCommitteeViewHolder extends RecyclerView.ViewHolder {

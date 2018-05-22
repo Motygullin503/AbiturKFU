@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.model.entities.Course;
 
@@ -39,8 +38,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
 
         holder.tvName.setText(course.getName());
         holder.tvTerms.setText(course.getTerm());
-
-
+        holder.itemView.setOnClickListener(view -> listener.onClick(view, course.getId()));
     }
 
     @Override
@@ -49,8 +47,8 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
     }
 
     public void setData(List<Course> courses) {
-
         this.courses = courses;
+        notifyDataSetChanged();
     }
 
     public class CoursesViewHolder extends RecyclerView.ViewHolder{

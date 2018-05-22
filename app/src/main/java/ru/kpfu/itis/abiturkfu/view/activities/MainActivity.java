@@ -1,5 +1,6 @@
 package ru.kpfu.itis.abiturkfu.view.activities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,10 @@ import android.view.MenuItem;
 
 import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.CalendarFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
+import ru.kpfu.itis.abiturkfu.view.view_models.MainActivityViewModel;
 import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
 
 
@@ -21,12 +24,14 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String SUFF = "MAIN";
     private CenteredToolbar toolbar;
+    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
         toolbar = findViewById(R.id.my_toolbar);
 
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_main);
-        showMainPage();
+        setFragmentByClass(viewModel.getLastFragmentClazz());
     }
 
     @Override
@@ -82,16 +87,16 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_main:
-                showMainPage();
+                setFragmentByClass(MainFragment.class);
                 break;
             case R.id.nav_calculate_exams:
 
                 break;
             case R.id.nav_abiturient_calendar:
-
+                setFragmentByClass(CalendarFragment.class);
                 break;
             case R.id.nav_courses:
-                showCourses();
+                setFragmentByClass(CoursesFragment.class);
                 break;
             case R.id.nav_contests:
 
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_about:
-                showAboutUs();
+                setFragmentByClass(AboutUsFragment.class);
                 break;
         }
 
@@ -109,23 +114,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showMainPage() {
-        //toolbarTitle.setText("Главное");
-        getSupportActionBar().setTitle("Главное");
-        setFragmentByClass(MainFragment.class);
-    }
-
-    private void showAboutUs() {
-        getSupportActionBar().setTitle("О нас");
-        setFragmentByClass(AboutUsFragment.class);
-    }
-
-    private void showCourses() {
-        getSupportActionBar().setTitle("Курсы");
-        setFragmentByClass(CoursesFragment.class);
-    }
-
     private void setFragmentByClass(Class<? extends Fragment> fragmentClass) {
+        viewModel.setLastFragmentClazz(fragmentClass);
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(fragmentClass.getName() + SUFF);
         if (fragment == null) {
             try {

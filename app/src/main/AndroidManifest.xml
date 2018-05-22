@@ -41,7 +41,9 @@
         <activity
             android:name=".view.activities.AboutExamsActivity"
             android:label="Об экзаменах" />
-        <activity android:name=".view.activities.CourseActivity"></activity>
+        <activity
+            android:name=".view.activities.CourseActivity"
+            android:label="Курс" />
     </application>
 
 </manifest>

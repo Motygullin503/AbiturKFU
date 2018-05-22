@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,23 +19,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="16dp">
+            android:orientation="vertical">
 
             <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginEnd="16dp"
-
-
+                android:layout_marginStart="16dp"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -48,10 +47,10 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:layout_marginTop="7dp"
                         android:id="@+id/course_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
                         android:text="Учебно-методический центр тестирования и подготовки к ЕГЭ КФУ проводит подготовку к сдаче ЕГЭ по предметам вступительных испытаний в КФУ и другие ведущие вузы РТ и РФ.
 
 На учебные подготовительные курсы принимаются учащиеся 9, 10, 11 классов, а также лица,  имеющие среднее образование.
@@ -65,8 +64,8 @@
 
             <TextView
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
 
                 android:layout_marginTop="8dp"
                 android:text="Стоимость обучения"
@@ -76,7 +75,6 @@
 
             <LinearLayout
                 android:id="@+id/view_container"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -84,17 +82,18 @@
             <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginEnd="16dp"
-
-
+                android:layout_marginStart="16dp"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,10 +105,10 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:layout_marginTop="7dp"
                         android:id="@+id/course_enlistment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
                         android:text="- Пройти регистрацию на сайте
 - Оплатить
 - для оформления договора на очные курсы необходимо подойти по адресу ул. Кремлевская,35, 116 каб. (ждать звонка не нужно!!!). При себе иметь:  паспорт слушателя и одного из родителей, квитанцию с ксерокопией о перечислении денег, 2 фотографии 3х4; " />
@@ -124,9 +123,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="-8dp"
-
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
 
                 android:text="Посетить веб-сайт" />
 

@@ -26,6 +26,8 @@ public class DatabaseModule {
                 context.getApplicationContext(),
                 AbiturientDatabase.class,
                 DATABASE_NAME
-        ).build();
+        )
+                .fallbackToDestructiveMigration()
+                .build();
     }
 }

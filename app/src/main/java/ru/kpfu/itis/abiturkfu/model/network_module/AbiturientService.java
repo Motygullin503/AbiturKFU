@@ -6,7 +6,9 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import ru.kpfu.itis.abiturkfu.model.entities.Course;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
+import ru.kpfu.itis.abiturkfu.model.entities.PartnerAndCommittee;
 import ru.kpfu.itis.abiturkfu.model.entities.Result;
 import ru.kpfu.itis.abiturkfu.model.entities.Speciality;
 
@@ -31,4 +33,13 @@ public interface AbiturientService {
 
     @GET("/api/v1/specialty/{id}")
     Observable<Result<Speciality>> getSpecialitiesById(@Path("id") int id);
+
+    @GET("/api/v1/course")
+    Observable<Result<List<Course>>> getCourses();
+
+    @GET("/api/v1/course/{id}")
+    Observable<Result<Course>> getCourseById(@Path("id") int id);
+
+    @GET("/api/v1/selection_committee")
+    Observable<Result<PartnerAndCommittee>> getAboutUs();
 }

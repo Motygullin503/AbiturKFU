@@ -8,7 +8,7 @@ import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 /**
  * Stores all of DAOs in {@link AbiturientDatabase}
  */
-@Database(entities = {Facility.class}, version = 1, exportSchema = false)
+@Database(entities = {Facility.class}, version = 2, exportSchema = false)
 public abstract class AbiturientDatabase extends RoomDatabase {
     public abstract FacilityDao getFacilityDao();
 }
