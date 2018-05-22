@@ -44,6 +44,12 @@
         <activity
             android:name=".view.activities.CourseActivity"
             android:label="Курс" />
+        <activity
+            android:name=".view.activities.ContestActivity"
+            android:label="Конкурсы" />
+        <activity
+            android:name=".view.activities.HowToApplyActivity"
+            android:label="Шаги поступления" />
     </application>
 
 </manifest>

@@ -15,7 +15,9 @@ import ru.kpfu.itis.abiturkfu.R;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CalculatorFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CalendarFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.ContestsFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.HowToApplyFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 import ru.kpfu.itis.abiturkfu.view.view_models.MainActivityViewModel;
 import ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar;
@@ -100,10 +102,10 @@ public class MainActivity extends AppCompatActivity
                 setFragmentByClass(CoursesFragment.class);
                 break;
             case R.id.nav_contests:
-
+                setFragmentByClass(ContestsFragment.class);
                 break;
             case R.id.nav_how_to_enter:
-
+                setFragmentByClass(HowToApplyFragment.class);
                 break;
             case R.id.nav_about:
                 setFragmentByClass(AboutUsFragment.class);

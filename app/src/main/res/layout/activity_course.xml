@@ -4,6 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <ru.kpfu.itis.abiturkfu.view.views.CenteredToolbar
@@ -20,6 +21,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_medium"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                tools:text="Курсы подготовки к ЕГЭ и ОГЭ" />
+
 
             <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
