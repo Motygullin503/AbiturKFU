@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import ru.kpfu.itis.abiturkfu.model.entities.Course;
+import ru.kpfu.itis.abiturkfu.model.entities.Event;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 import ru.kpfu.itis.abiturkfu.model.entities.PartnerAndCommittee;
 import ru.kpfu.itis.abiturkfu.model.entities.Result;
@@ -42,4 +43,7 @@ public interface AbiturientService {
 
     @GET("/api/v1/selection_committee")
     Observable<Result<PartnerAndCommittee>> getAboutUs();
+
+    @GET("/api/v1/event")
+    Observable<Result<List<Event>>> getEvents();
 }

@@ -1,7 +1,13 @@
 package ru.kpfu.itis.abiturkfu.model.entities;
 
+import android.support.annotation.Nullable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class Event {
 
@@ -16,7 +22,7 @@ public class Event {
     private String startTime;
     @SerializedName("end_time")
     @Expose
-    private Object endTime;
+    private String endTime;
     @SerializedName("address")
     @Expose
     private String address;
@@ -37,19 +43,29 @@ public class Event {
         this.name = name;
     }
 
-    public String getStartTime() {
-        return startTime;
+    @Nullable
+    public DateTime getStartTime() {
+        if (startTime == null) {
+            return null;
+        }
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        return DateTime.parse(startTime, formatter);
     }
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Object getEndTime() {
-        return endTime;
+    @Nullable
+    public DateTime getEndTime() {
+        if (endTime == null) {
+            return null;
+        }
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
+        return DateTime.parse(endTime, formatter);
     }
 
-    public void setEndTime(Object endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

@@ -13,6 +13,7 @@ import ru.kpfu.itis.abiturkfu.view.activities.FacilityActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FilteredFacilitiesActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.PlanActivity;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.CalendarFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 
@@ -39,4 +40,6 @@ public interface ModulesComponent {
     void inject(CourseActivity courseActivity);
 
     void inject(AboutUsFragment aboutUsFragment);
+
+    void inject(CalendarFragment calendarFragment);
 }
