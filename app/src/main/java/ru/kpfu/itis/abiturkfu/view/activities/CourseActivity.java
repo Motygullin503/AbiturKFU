@@ -111,7 +111,6 @@ public class CourseActivity extends AppCompatActivity {
 
         courseInfo.setText(course.getDescription());
         courseEnlistment.setText(course.getEnlistment());
-        //ToDo: fill
 
         for (CourseCategory category : course.getCourseCategories()) {
             int id = category.getId();
