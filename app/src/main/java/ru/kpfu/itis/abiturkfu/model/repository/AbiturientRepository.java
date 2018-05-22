@@ -43,8 +43,7 @@ public class AbiturientRepository {
         ResponseLiveData<List<Facility>> data = new ResponseLiveData<>(() -> database.getFacilityDao().getAllFacilities());
         if (forceNetLoad) {
             Loader<List<Facility>> loader = result -> {
-                database.getFacilityDao().clearAll();
-                database.getFacilityDao().insertAll(result.toArray(new Facility[result.size()]));
+                database.getFacilityDao().clearAndInsert(result.toArray(new Facility[result.size()]));
             };
             loader.load(service.getAllFacilities(), data);
         }

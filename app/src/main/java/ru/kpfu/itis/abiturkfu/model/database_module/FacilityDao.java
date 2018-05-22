@@ -5,23 +5,30 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Transaction;
 
 import java.util.List;
 
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
 
 @Dao
-public interface FacilityDao {
-    // TODO: 21.05.18 add transaction
+public abstract class FacilityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Facility... facility);
+    public abstract void insertAll(Facility... facility);
 
     @Query("SELECT * FROM facilities")
-    LiveData<List<Facility>> getAllFacilities();
+    public abstract LiveData<List<Facility>> getAllFacilities();
 
     @Query("SELECT * FROM facilities WHERE id == :id")
-    LiveData<Facility> getFacilityById(int id);
+    public abstract LiveData<Facility> getFacilityById(int id);
 
     @Query("DELETE FROM facilities")
-    void clearAll();
+    public abstract void clearAll();
+
+    @Transaction
+    public void clearAndInsert(Facility... facilities){
+        clearAll();
+        insertAll(facilities);
+    }
+
 }
