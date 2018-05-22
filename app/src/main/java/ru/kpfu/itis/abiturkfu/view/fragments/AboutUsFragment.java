@@ -1,6 +1,9 @@
 package ru.kpfu.itis.abiturkfu.view.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +37,8 @@ public class AboutUsFragment extends Fragment {
     RecyclerView rvCommittees;
     AboutUsPartnersAdapter aboutUsPartnersAdapter;
     AboutUsCommitteeAdapter aboutUsCommitteeAdapter;
+    FloatingActionButton fabVk;
+    FloatingActionButton fabInstagram;
 
     @Inject
     AbiturientRepository repository;
@@ -55,6 +60,21 @@ public class AboutUsFragment extends Fragment {
         if (getActivity() != null && ((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("О нас");
         }
+
+        fabVk = view.findViewById(R.id.fab_vk);
+        fabVk.setOnClickListener(view1 -> {
+            Uri uri = Uri.parse("https://vk.com/kazan_federal_university");
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
+
+        fabInstagram = view.findViewById(R.id.fab_instagram);
+        fabInstagram.setOnClickListener(view1 -> {
+            Uri uri = Uri.parse("https://www.instagram.com/kazanfederaluniversity/");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
 
         rvPartners = view.findViewById(R.id.rv_partners);
         rvCommittees = view.findViewById(R.id.rv_priem);
