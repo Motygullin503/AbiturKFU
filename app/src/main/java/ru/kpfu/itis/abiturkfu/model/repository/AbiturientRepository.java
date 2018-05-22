@@ -13,6 +13,7 @@ import io.reactivex.internal.operators.observable.ObservableError;
 import io.reactivex.schedulers.Schedulers;
 import ru.kpfu.itis.abiturkfu.App;
 import ru.kpfu.itis.abiturkfu.model.database_module.AbiturientDatabase;
+import ru.kpfu.itis.abiturkfu.model.entities.Contest;
 import ru.kpfu.itis.abiturkfu.model.entities.Course;
 import ru.kpfu.itis.abiturkfu.model.entities.Event;
 import ru.kpfu.itis.abiturkfu.model.entities.Facility;
@@ -121,6 +122,20 @@ public class AbiturientRepository {
         ResponseLiveData<List<Event>> data = new ResponseLiveData<>();
         Loader<List<Event>> loader = data::postBody;
         loader.load(service.getEvents(), data);
+        return data;
+    }
+
+    public ResponseLiveData<List<Contest>> getContests() {
+        ResponseLiveData<List<Contest>> data = new ResponseLiveData<>();
+        Loader<List<Contest>> loader = data::postBody;
+        loader.load(service.getContests(), data);
+        return data;
+    }
+
+    public ResponseLiveData<Contest> getContestById(int id) {
+        ResponseLiveData<Contest> data = new ResponseLiveData<>();
+        Loader<Contest> loader = data::postBody;
+        loader.load(service.getContestById(id), data);
         return data;
     }
 

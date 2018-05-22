@@ -8,12 +8,14 @@ import ru.kpfu.itis.abiturkfu.model.network_module.NetModule;
 import ru.kpfu.itis.abiturkfu.model.repository.AbiturientRepository;
 import ru.kpfu.itis.abiturkfu.model.repository.RepositoryModule;
 import ru.kpfu.itis.abiturkfu.view.activities.AboutExamsActivity;
+import ru.kpfu.itis.abiturkfu.view.activities.ContestActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.CourseActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FacilityActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.FilteredFacilitiesActivity;
 import ru.kpfu.itis.abiturkfu.view.activities.PlanActivity;
 import ru.kpfu.itis.abiturkfu.view.fragments.AboutUsFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CalendarFragment;
+import ru.kpfu.itis.abiturkfu.view.fragments.ContestsFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.CoursesFragment;
 import ru.kpfu.itis.abiturkfu.view.fragments.MainFragment;
 
@@ -42,4 +44,8 @@ public interface ModulesComponent {
     void inject(AboutUsFragment aboutUsFragment);
 
     void inject(CalendarFragment calendarFragment);
+
+    void inject(ContestActivity contestActivity);
+
+    void inject(ContestsFragment contestsFragment);
 }
