@@ -5,9 +5,11 @@ import android.support.annotation.Nullable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Event {
 
@@ -44,12 +46,16 @@ public class Event {
     }
 
     @Nullable
-    public DateTime getStartTime() {
+    public Date getStartTime() {
         if (startTime == null) {
             return null;
         }
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
-        return DateTime.parse(startTime, formatter);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'", Locale.getDefault());
+        try {
+            return dateFormat.parse(startTime);
+        } catch (ParseException e) {
+            return null;
+        }
     }
 
     public void setStartTime(String startTime) {
@@ -57,12 +63,16 @@ public class Event {
     }
 
     @Nullable
-    public DateTime getEndTime() {
+    public Date getEndTime() {
         if (endTime == null) {
             return null;
         }
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.000'Z'");
-        return DateTime.parse(endTime, formatter);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000'Z'", Locale.getDefault());
+        try {
+            return dateFormat.parse(endTime);
+        } catch (ParseException e) {
+            return null;
+        }
     }
 
     public void setEndTime(String endTime) {

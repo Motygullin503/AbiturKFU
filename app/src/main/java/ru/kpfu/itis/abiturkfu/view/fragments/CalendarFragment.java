@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 
-import org.joda.time.DateTime;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +47,7 @@ public class CalendarFragment extends Fragment {
         }
 
         SimpleDateFormat bottomDate = new SimpleDateFormat("EEEE, dd MMMM", new Locale("ru"));
+        SimpleDateFormat bottomTime = new SimpleDateFormat("kk:mm", new Locale("ru"));
         Date now = new Date(System.currentTimeMillis());
         setDate(now, bottomDate);
         setMonthName(now);
@@ -67,11 +66,11 @@ public class CalendarFragment extends Fragment {
                     TextView address = view.findViewById(R.id.tv_address);
                     String startTime = "";
                     if (e.getStartTime() != null) {
-                        startTime = e.getStartTime().toString("kk:mm", new Locale("ru"));
+                        startTime = bottomTime.format(e.getStartTime());
                     }
                     String endTime = "";
                     if (e.getEndTime() != null) {
-                        endTime = e.getEndTime().toString("kk:mm", new Locale("ru"));
+                        endTime = bottomTime.format(e.getEndTime());
                     }
                     startDate.setText(startTime);
                     endDate.setText(endTime);
@@ -120,12 +119,12 @@ public class CalendarFragment extends Fragment {
     }
 
     private void setMonthName(Date firstDayOfNewMonth) {
-        DateTime dateTime = new DateTime(firstDayOfNewMonth);
         SimpleDateFormat format = new SimpleDateFormat("LLLL", new Locale("ru"));
+        SimpleDateFormat year = new SimpleDateFormat("YYYY", new Locale("ru"));
         String month = format.format(firstDayOfNewMonth);
         month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
         r.base.tvMonth.setText(month);
-        r.base.tvYear.setText(dateTime.toString("YYYY"));
+        r.base.tvYear.setText(year.format(firstDayOfNewMonth));
     }
 
     private void fill(List<Event> events) {
@@ -133,7 +132,7 @@ public class CalendarFragment extends Fragment {
             r.base.compactcalendarView.addEvent(
                     new com.github.sundeepk.compactcalendarview.domain.Event(
                             Color.rgb(255, 255, 255),
-                            event.getStartTime().getMillis(),
+                            event.getStartTime().getTime(),
                             event
                     )
             );
