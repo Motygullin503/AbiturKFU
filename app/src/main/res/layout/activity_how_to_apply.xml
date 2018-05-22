@@ -32,7 +32,7 @@
             android:textSize="13sp" />
 
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/card1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,9 +74,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/card2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,9 +119,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/card3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,9 +164,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/card4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
 
     </LinearLayout>
@@ -216,7 +216,7 @@
             android:textSize="13sp" />
 
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard"
             android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
@@ -259,9 +259,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -304,9 +304,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -376,9 +376,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard3No"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -421,9 +421,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard4No"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -466,9 +466,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard5No"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -496,9 +496,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard3Yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -541,9 +541,9 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
-        <android.support.design.card.MaterialCardView
+        <android.support.v7.widget.CardView
             android:id="@+id/inCard4Yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -571,7 +571,7 @@
 
             </LinearLayout>
 
-        </android.support.design.card.MaterialCardView>
+        </android.support.v7.widget.CardView>
 
 
     </LinearLayout>

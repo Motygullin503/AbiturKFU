@@ -1,11 +1,11 @@
 package ru.kpfu.itis.abiturkfu.view.adapters;
 
 import android.support.annotation.NonNull;
-import android.support.design.chip.Chip;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class SubjectChipAdapter extends RecyclerView.Adapter<SubjectChipAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SubjectChipViewHolder holder, int position) {
-        holder.chip.setChipText(subjects.get(position).getName());
+        holder.chip.setText(subjects.get(position).getName());
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SubjectChipAdapter extends RecyclerView.Adapter<SubjectChipAdapter.
     }
 
     static class SubjectChipViewHolder extends RecyclerView.ViewHolder {
-        final Chip chip;
+        final TextView chip;
 
         public SubjectChipViewHolder(@NonNull View itemView) {
             super(itemView);
