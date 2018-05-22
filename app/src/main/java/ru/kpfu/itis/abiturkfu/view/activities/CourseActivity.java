@@ -30,6 +30,7 @@ public class CourseActivity extends AppCompatActivity {
     Course course;
     TextView courseInfo;
     TextView courseEnlistment;
+    TextView courseName;
     CenteredToolbar toolbar;
 
     @Inject
@@ -48,6 +49,7 @@ public class CourseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         courseInfo = findViewById(R.id.course_info);
         courseEnlistment = findViewById(R.id.course_enlistment);
+        courseName = findViewById(R.id.tv_name);
 
         goToSite = findViewById(R.id.btn_web_site);
         goToSite.setOnClickListener(view -> {
@@ -111,7 +113,8 @@ public class CourseActivity extends AppCompatActivity {
 
         courseInfo.setText(course.getDescription());
         courseEnlistment.setText(course.getEnlistment());
-        //ToDo: fill
+        courseName.setText(course.getName());
+
 
         for (CourseCategory category : course.getCourseCategories()) {
             int id = category.getId();
