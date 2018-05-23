@@ -120,7 +120,7 @@ public class CalendarFragment extends Fragment {
 
     private void setMonthName(Date firstDayOfNewMonth) {
         SimpleDateFormat format = new SimpleDateFormat("LLLL", new Locale("ru"));
-        SimpleDateFormat year = new SimpleDateFormat("YYYY", new Locale("ru"));
+        SimpleDateFormat year = new SimpleDateFormat("yyyy", new Locale("ru"));
         String month = format.format(firstDayOfNewMonth);
         month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
         r.base.tvMonth.setText(month);
