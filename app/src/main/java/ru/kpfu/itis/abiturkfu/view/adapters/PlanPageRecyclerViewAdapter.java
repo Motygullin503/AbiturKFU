@@ -75,7 +75,7 @@ public class PlanPageRecyclerViewAdapter extends RecyclerView.Adapter<PlanPageRe
         holder.r.tvStudyType.setText(Html.fromHtml(eduTypeBuilder.toString()));
 
         boolean hasBudget = false;
-        StringBuilder countBuilder = new StringBuilder("<font color=\"#0068b4\">Форма обучения: </font>");
+        StringBuilder countBuilder = new StringBuilder("<font color=\"#0068b4\">Количество мест: </font>");
         if (speciality.getBudgetPlace() != null && speciality.getBudgetPlace() > 0) {
             hasBudget = true;
             countBuilder.append(speciality.getBudgetPlace());
